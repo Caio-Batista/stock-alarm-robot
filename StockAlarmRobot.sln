@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.808.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAlarmRobot", "StockAlarmRobot\StockAlarmRobot.csproj", "{EF0E8F71-530D-4B17-B4A8-FF913701A10F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EF0E8F71-530D-4B17-B4A8-FF913701A10F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF0E8F71-530D-4B17-B4A8-FF913701A10F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF0E8F71-530D-4B17-B4A8-FF913701A10F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF0E8F71-530D-4B17-B4A8-FF913701A10F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B21D4D2-2765-43D2-BCC0-040491F6F771}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,12 @@
+/Users/caio.oliveira/Desktop/backend-stock/StockAlarmRobot/StockAlarmRobot/bin/Debug/netcoreapp3.1/StockAlarmRobot.deps.json
+/Users/caio.oliveira/Desktop/backend-stock/StockAlarmRobot/StockAlarmRobot/bin/Debug/netcoreapp3.1/StockAlarmRobot.runtimeconfig.json
+/Users/caio.oliveira/Desktop/backend-stock/StockAlarmRobot/StockAlarmRobot/bin/Debug/netcoreapp3.1/StockAlarmRobot.runtimeconfig.dev.json
+/Users/caio.oliveira/Desktop/backend-stock/StockAlarmRobot/StockAlarmRobot/bin/Debug/netcoreapp3.1/StockAlarmRobot.dll
+/Users/caio.oliveira/Desktop/backend-stock/StockAlarmRobot/StockAlarmRobot/bin/Debug/netcoreapp3.1/StockAlarmRobot.pdb
+/Users/caio.oliveira/Desktop/backend-stock/StockAlarmRobot/StockAlarmRobot/obj/Debug/netcoreapp3.1/StockAlarmRobot.csprojAssemblyReference.cache
+/Users/caio.oliveira/Desktop/backend-stock/StockAlarmRobot/StockAlarmRobot/obj/Debug/netcoreapp3.1/StockAlarmRobot.AssemblyInfoInputs.cache
+/Users/caio.oliveira/Desktop/backend-stock/StockAlarmRobot/StockAlarmRobot/obj/Debug/netcoreapp3.1/StockAlarmRobot.AssemblyInfo.cs
+/Users/caio.oliveira/Desktop/backend-stock/StockAlarmRobot/StockAlarmRobot/obj/Debug/netcoreapp3.1/StockAlarmRobot.csproj.CoreCompileInputs.cache
+/Users/caio.oliveira/Desktop/backend-stock/StockAlarmRobot/StockAlarmRobot/obj/Debug/netcoreapp3.1/StockAlarmRobot.dll
+/Users/caio.oliveira/Desktop/backend-stock/StockAlarmRobot/StockAlarmRobot/obj/Debug/netcoreapp3.1/StockAlarmRobot.pdb
+/Users/caio.oliveira/Desktop/backend-stock/StockAlarmRobot/StockAlarmRobot/obj/Debug/netcoreapp3.1/StockAlarmRobot.genruntimeconfig.cache
