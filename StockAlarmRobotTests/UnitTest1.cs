@@ -1,12 +1,13 @@
 using NUnit.Framework;
 using System.IO;
 using System;
+using StockAlarmRobot;
 
 namespace StockAlarmRobotTests
 {
     public class Tests
     {
-        private const string Expected = "Hello World!";
+        private const string Expected = "Key = SMTP_ENDPOINT, Value = 123";
 
         [SetUp]
         public void Setup()
@@ -17,12 +18,20 @@ namespace StockAlarmRobotTests
         {
             using (var sw = new StringWriter())
             {
+                
+                var fakeReader = new FakeFileReader();
+                var path = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.
+                Parent.FullName, "sample.smtpconfig.test");
+
+
                 Console.SetOut(sw);
-                string[] args = {};
-                StockAlarmRobot.Program.Main(args);
+                string[] args = { "sample.smtpconfig.test" };
+                Program myProgram = new Program(fakeReader);
+                Program.Main(args);
 
                 var result = sw.ToString().Trim();
-                Assert.AreEqual(Expected, result);
+                Console.WriteLine(result);
+                Assert.IsTrue(result.Contains(Expected));
             }
         }
     }
