@@ -11,4 +11,7 @@
   <ItemGroup>
     <None Remove="a.smtpconfig" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="src\EmptyEnumeration.cs" />
+  </ItemGroup>
 </Project>

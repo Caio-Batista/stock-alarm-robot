@@ -7,7 +7,7 @@ namespace StockAlarmRobotTests
 {
     public class Tests
     {
-        private const string Expected = "Key = SMTP_ENDPOINT, Value = 123";
+        private const string Expected = "Created client SMTP successfuly";
 
         [SetUp]
         public void Setup()
@@ -25,7 +25,7 @@ namespace StockAlarmRobotTests
 
 
                 Console.SetOut(sw);
-                string[] args = { "sample.smtpconfig.test" };
+                string[] args = { path };
                 Program myProgram = new Program(fakeReader);
                 Program.Main(args);
 

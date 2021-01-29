@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using StockAlarmRobotTests;
+using StockAlarmRobot.src;
 
 namespace StockAlarmRobot
 {
     public class Program
     {
         static IFileReader fileReader;
+        static CustomSmtpClient customClient;
         public Program(IFileReader reader)
         {
             fileReader = reader;
@@ -17,14 +19,15 @@ namespace StockAlarmRobot
         {
             
             Console.WriteLine("Starting stock alarm robot...");
-
+            
             if (args.Length < 1)
             {
+                Console.WriteLine("ERROR: Missing arguments");
                 Environment.Exit(1);
             }
 
-            string path =
-                Path.Combine(getCurrentPath(), args[0].ToString());
+            string path = args[0].ToString();
+            Console.WriteLine(path);
 
 
             string[] configs;
@@ -35,10 +38,15 @@ namespace StockAlarmRobot
             catch(Exception e)
             {
                 Console.WriteLine(e.Message);
+                Console.WriteLine(
+                    "\nError reading file, did you spell it correctly?"
+                );
                 configs = new string[] { };
+                Environment.Exit(1);
             }
             
             var mapConfigs = new Dictionary<string, string>();
+
             foreach (var line in configs)
             {
                 string[] subs = line.Split('=');
@@ -47,29 +55,22 @@ namespace StockAlarmRobot
 
             if (!validateConfigs(mapConfigs))
             {
-                Console.WriteLine("Error validating configs");
+                Console.WriteLine("Error validating file");
                 Environment.Exit(1);
             }
 
+            Console.WriteLine("Creating client SMTP");
 
-            foreach (KeyValuePair<string, string> kvp in mapConfigs)
-            { 
-                Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
-            }
+            customClient = new CustomSmtpClient(mapConfigs);
+
+            Console.WriteLine("Created client SMTP successfuly");
 
 
         }
 
         private static bool validateConfigs(Dictionary<string, string> mapConfigs)
         {
-            string[] fields = {
-                "SMTP_ENDPOINT",
-                "SMPT_CODE",
-                "RECEIVER_EMAIL",
-                "SENDER_EMAIL",
-                "SENDER_PASS",
-                "SENDER_NAME"
-            };
+            
             List<string> keyList = new List<string>(mapConfigs.Keys);
             bool isValid = true;
 
@@ -83,7 +84,7 @@ namespace StockAlarmRobot
             }
 
 
-            foreach (var item  in fields)
+            foreach (string item in Constants.CONFIG_KEYS)
             {
                 if (!keyList.Contains(item))
                 {
