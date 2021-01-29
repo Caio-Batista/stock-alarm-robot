@@ -11,7 +11,4 @@
   <ItemGroup>
     <None Remove="a.smtpconfig" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="default.smtpconfig" />
-  </ItemGroup>
 </Project>
