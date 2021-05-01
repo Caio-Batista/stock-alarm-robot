@@ -21,7 +21,7 @@ namespace StockAlarmRobotTests
                 
                 var fakeReader = new FakeFileReader();
                 var path = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.
-                Parent.FullName, "sample.smtpconfig.test");
+                Parent.FullName, "default.robot.config.test");
 
 
                 Console.SetOut(sw);

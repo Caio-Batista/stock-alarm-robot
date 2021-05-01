@@ -12,5 +12,6 @@ namespace StockAlarmRobot.src
             "RECEIVER_NAME",
             "CLIENT_TIMEOUT"
         };
+        public static string FILE_NAME = "default.robot.config";
     }
 }

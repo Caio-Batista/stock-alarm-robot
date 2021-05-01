@@ -19,41 +19,12 @@ namespace StockAlarmRobot
         {
             
             Console.WriteLine("Starting stock alarm robot...");
-            
-            if (args.Length < 1)
-            {
-                Console.WriteLine("ERROR: Missing arguments");
-                Environment.Exit(1);
-            }
-
-            string path = args[0].ToString();
-            Console.WriteLine(path);
 
 
-            string[] configs;
-            try
-            {
-                configs = File.ReadAllLines(path);
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine(e.Message);
-                Console.WriteLine(
-                    "\nError reading file, did you spell it correctly?"
-                );
-                configs = new string[] { };
-                Environment.Exit(1);
-            }
-            
-            var mapConfigs = new Dictionary<string, string>();
+            Dictionary<string, string> configs = getRobotConfigs();
+           
 
-            foreach (var line in configs)
-            {
-                string[] subs = line.Split('=');
-                mapConfigs[subs[0]] = subs[1];
-            }
-
-            if (!validateConfigs(mapConfigs))
+            if (!validateConfigs(configs))
             {
                 Console.WriteLine("Error validating file");
                 Environment.Exit(1);
@@ -61,11 +32,61 @@ namespace StockAlarmRobot
 
             Console.WriteLine("Creating client SMTP");
 
-            customClient = new CustomSmtpClient(mapConfigs);
+            customClient = new CustomSmtpClient(configs);
 
             Console.WriteLine("Created client SMTP successfuly");
 
+            // customClient.sendMessage("Changing file name", "hey hey");
 
+
+        }
+
+
+        private static Dictionary<string, string> getRobotConfigs()
+        {
+            var fullPath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.
+               Parent.FullName, Constants.FILE_NAME);
+            string shortPath = Constants.FILE_NAME;
+
+            Console.WriteLine(fullPath);
+
+
+            string[] configs;
+            try
+            {
+                configs = File.ReadAllLines(shortPath);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(
+                    "\nWarning: Error reading file, fallback to full path..."
+                );
+
+                try
+                {
+                    configs = File.ReadAllLines(fullPath);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine(
+                        "\nError could not find file, did you spell it right?"
+                    );
+                    configs = new string[] { };
+                    Environment.Exit(1);
+                }
+
+            }
+
+            var mapConfigs = new Dictionary<string, string>();
+            foreach (var line in configs)
+            {
+                string[] subs = line.Split('=');
+                mapConfigs[subs[0]] = subs[1];
+            }
+
+
+            return mapConfigs;
         }
 
         private static bool validateConfigs(Dictionary<string, string> mapConfigs)
@@ -96,13 +117,6 @@ namespace StockAlarmRobot
             return isValid;
 
         }
-
-        public static string getCurrentPath()
-        {
-            return Directory.GetParent(Environment.CurrentDirectory).Parent.
-                Parent.FullName;
-        }
-
 
     }
 }
