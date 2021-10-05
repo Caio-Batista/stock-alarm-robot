@@ -10,3 +10,5 @@ dotnet build
 ```shell
 dotnet run {param1} {param2} {param3}
 ```
+
+OBS: os testes variam de acordo com o ambiente (local/CI)
